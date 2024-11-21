@@ -8,13 +8,64 @@
 <body style="background-color: black; color: aliceblue;" >
     <h2>Amazing images</h2>
     <div>
-        <li><img width="200px" id="photoshop" src="https://www.pexels.com/photo/low-angle-photography-of-building-2371016/" alt="photoshop"></li>
-        <li><img width="200px" id="japan" src="https://www.pexels.com/photo/photo-of-cityscape-at-night-1660603/" alt=""></li>
-        <li><img width="200px" id="river" src="https://www.pexels.com/photo/woman-sitting-on-road-during-night-time-1970482/" alt=""></li>
-        <li><img width="200px" id="owl" src="https://www.pexels.com/photo/woman-in-black-jacket-carrying-backpack-with-tousled-hair-walking-on-the-street-at-night-2389349/" alt=""></li>
-        <li><img width="200px" id="prayer" src="https://www.pexels.com/photo/city-at-night-2921139/" alt=""></li>
-        <li><img width="200px" id="city" src="https://www.pexels.com/photo/blurred-shot-of-a-city-at-night-1668928/" alt=""></li>
-        <li><img width="200px" id="road" src="https://www.pexels.com/photo/time-lapse-photography-of-road-1717862/" alt=""></li>
+       <ul id="images">
+        <li><img width="200px" id="photoshop" src="https://images.pexels.com/photos/1563356/pexels-photo-1563356.jpeg?auto=compress&cs=tinysrgb&w=400" alt="photoshop"></li>
+        <li><img width="200px" id="beach" src="https://images.pexels.com/photos/1387037/pexels-photo-1387037.jpeg?auto=compress&cs=tinysrgb&w=400" alt=""></li>
+        <li><img width="200px" id="night" src="https://images.pexels.com/photos/1906658/pexels-photo-1906658.jpeg?auto=compress&cs=tinysrgb&w=400" alt=""></li>
+        <li><img width="200px" id="seashore" src="https://images.pexels.com/photos/848573/pexels-photo-848573.jpeg?auto=compress&cs=tinysrgb&w=400" alt=""></li>
+        <li><img width="200px" id="mountains" src="https://images.pexels.com/photos/2469122/pexels-photo-2469122.jpeg?auto=compress&cs=tinysrgb&w=400" alt=""></li>
+        <li><img width="200px" id="lady" src="https://images.pexels.com/photos/3755021/pexels-photo-3755021.jpeg?auto=compress&cs=tinysrgb&w=400/" alt=""></li>
+    <li> <a style="color: aliceblue;" href="https://google.com" id="google">Google</a></li>
+       </ul>    
     </div>
 </body>
+<script>
+    // document.getElementById('night').onclick = function(){
+    //     alert('night clicked')
+    // } it's not wrong but it may create problems on on click function/provides less function.... so better to use eventListener
+    //attachEvent()
+    //jQuery- on 
+    
+    // document.getElementById('night').addEventListener('click',function(){alert('night pic clicked')})
+
+   document.getElementById('night').addEventListener('click',function(e){
+    // console.log(e)
+   }, false)
+   //type, timestamp, defaultPrevented,
+   //target, toElement, srcElement, currentTarget,
+   //clientX, clientY,screenX,screenY, 
+   //altkey,ctrlkey, shiftkey, keyCode
+
+   //+++++++++++++++++++++++++event propagation+++++++++++++++++//
+//    document.getElementById('images').addEventListener('click',function(e){
+//     console.log("clicked inside the ul")
+//    }, false)
+
+//    document.getElementById('night').addEventListener('click',function(e){
+//     console.log("night clicked")
+//     e.stopPropagation()
+//    }, false)
+
+//    document.getElementById('google').addEventListener('click', function (e) {
+//     e.preventDefault();
+//     e.stopPropagation();
+//     console.log("google clicked");
+//    }, false)
+   
+
+//++++++goal- user clicked on image n it's disappaer
+document.querySelector('#images').addEventListener('click', function(e){
+    console.log(e.target.tagName);
+//to avoid removing of all images as there parentnode is ul ...let's apply some checks
+      if (e.target.tagName === 'IMG'){
+        console.log(e.target.id);
+        
+          let removeIt = e.target.parentNode;
+           removeIt.remove()
+      }
+
+    // removeIt.parentNode.removeChild(removeIt)
+}, false)
+
+</script>
 </html>
